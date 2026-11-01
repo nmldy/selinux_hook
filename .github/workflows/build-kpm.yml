@@ -49,7 +49,19 @@ jobs:
 
           for dir in $(ls -d */ | grep -v '^KernelPatch/$\|^target/$\|^arm-gnu-toolchain'); do
             make -C ${dir}
-            mv ${dir}*.kpm target
+            
+            # 遍历编译出来的所有 kpm 文件并去除版本号
+            for kpm_file in ${dir}*.kpm; do
+              if [ -f "$kpm_file" ]; then
+                filename=$(basename "$kpm_file")
+                # 使用 sed 正则去掉 _数字.数字.数字.kpm 后缀
+                new_filename=$(echo "$filename" | sed -E 's/_[0-9]+\.[0-9]+(\.[0-9]+)?\.kpm/.kpm/')
+                
+                # 移动到 target 目录
+                mv "$kpm_file" "target/$new_filename"
+                echo "重命名并移动: $filename -> $new_filename"
+              fi
+            done
           done
 
       - name: Upload artifact
