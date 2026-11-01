@@ -56,9 +56,19 @@ KPM_DESCRIPTION("Audit and reject Magisk /sys/fs/selinux/access probes");
 #define APATCH_MANAGER_PACKAGE "me.bmax.apatch"
 #define APATCH_PACKAGES_LIST_PATH "/data/system/packages.list"
 #define APATCH_PACKAGES_LIST_MAX_SIZE (1024 * 1024)
+
+/* ===== audit 面（AVC side-channel）抑制 =====
+ * DuckDetector 报告路径: kernel AVC(type=1400) -> audit netlink -> logd.auditd
+ * -> logcat -> app 读取。在 audit_log_start() 处丢弃 app 触发的 AVC 记录，
+ * 四个下游全部干净，等价于 per-task dontaudit。 */
+#define AUDIT_AVC       1400
+#define AUDIT_AVC_PATH  1401
+static u32 g_avc_suppress_count;
+
 #ifndef APATCH_MANAGER_UID
 #define APATCH_MANAGER_UID ((uid_t)-1)
 #endif
+
 
 #define selinux_hook_dbg(fmt, ...) pr_info(fmt, ##__VA_ARGS__)
 
