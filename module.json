@@ -1,14 +1,13 @@
 {
     "metamodule": false,
     "summary": {
-        "en": "For APatch hide dirty selinux rules",
-        "zh": "隐藏脏的selinux规则"
+        "en": "Hide dirty SELinux rules for APatch",
+        "zh": "隐藏脏的 SELinux 规则，对抗检测"
     },
-    "modulename": "APatch selinux_hook",
-    "authors": ["APatch Modules Team"],
+    "modulename": "SELinux Access Filter",
+    "authors": ["nmldy"],
     "license": "GPL-2.0-only",
     "moduleid": "selinux_magisk_access_filter",
-    "version": "1.1.6.1",
-    "VersionCode": 10000,
-    "downloadUrl": "https://cdn.admirecn.de/selinux_hook_1.1.6.1.kpm"
+    "version": "1.0.0",
+    "VersionCode": 1
 }
