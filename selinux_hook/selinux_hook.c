@@ -1016,8 +1016,10 @@ static struct symbol_cache_entry g_symbol_cache[] = {
     SYMBOL_CACHE_ENTRY("context_struct_compute_av"),
     SYMBOL_CACHE_ENTRY("string_to_context_struct"),
     SYMBOL_CACHE_ENTRY("selinux_complete_init"),
-    SYMBOL_CACHE_ENTRY("selinux_policy_commit"),
+	  SYMBOL_CACHE_ENTRY("selinux_policy_commit"),
+	  SYMBOL_CACHE_ENTRY("audit_log_start"),
 };
+
 
 #define SYMBOL_CACHE_COUNT (sizeof(g_symbol_cache) / sizeof(g_symbol_cache[0]))
 
