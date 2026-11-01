@@ -4494,27 +4494,25 @@ static long exit_(void *__user r)
     return 0;
 }
 static long control(const char* args, char* __user out_msg, int outlen) {
-
     int rc = 0;
     char echo[64];
 
     zero_bytes(echo, sizeof(echo));
     if (rc < 0) {
-    sprintf(echo, "error, rc=%d\n", rc);
-        logke("fg_sram_write %s", echo);
+        snprintf(echo, sizeof(echo), "error, rc=%d\n", rc);
+        pr_err("[selinux_hook] %s", echo);
         if (out_msg) {
             compat_copy_to_user(out_msg, echo, sizeof(echo));
-            return 1;
         }
+        return 1;
     } else {
-        sprintf(echo, "success resp\n");
-        logki("fg_sram_write %s", echo);
+        snprintf(echo, sizeof(echo), "success resp\n");
+        pr_info("[selinux_hook] %s", echo);
         if (out_msg) {
             compat_copy_to_user(out_msg, echo, sizeof(echo));
-            return 0;
         }
+        return 0;
     }
-    return 0;
 }
 KPM_INIT(init);
 KPM_CTL0(control);
