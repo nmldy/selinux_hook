@@ -5,9 +5,10 @@
         "zh": "隐藏脏的 SELinux 规则，对抗检测"
     },
     "modulename": "SELinux Access Filter",
-    "authors": ["nmldy"],
+    "authors": ["你的名字"],
     "license": "GPL-2.0-only",
     "moduleid": "selinux_magisk_access_filter",
     "version": "1.0.0",
-    "VersionCode": 1
+    "VersionCode": 1,
+    "downloadUrl": "https://github.com/nmldy/selinux_hook/releases/latest/download/selinux_hook.kpm"
 }
