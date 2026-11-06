@@ -29,7 +29,7 @@ KPM_NAME("selinux_magisk_access_filter");
 #endif
 KPM_VERSION(SELINUX_VERSION);
 KPM_LICENSE("All rights reserved.");
-KPM_AUTHOR("Admire");
+KPM_AUTHOR("Nmldy");
 KPM_DESCRIPTION("Audit and reject Magisk /sys/fs/selinux/access probes");
 
 #define ACCESS_SAMPLE_MAX 256
