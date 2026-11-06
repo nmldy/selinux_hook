@@ -31,6 +31,13 @@ KPM_VERSION(SELINUX_VERSION);
 KPM_LICENSE("All rights reserved.");
 KPM_AUTHOR("Nmldy");
 KPM_DESCRIPTION("Audit and reject Magisk /sys/fs/selinux/access probes");
+/* [FIX] 前置声明：解决 implicit declaration / conflicting types */
+#ifndef ARRAY_SIZE
+#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
+#endif
+
+static size_t str_len_safe(const char *s);
+static bool ascii_lower_eq(char a, char b);
 
 #define ACCESS_SAMPLE_MAX 256
 #define ACCESS_PROBE_SLOTS 32
